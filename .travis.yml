@@ -3,7 +3,7 @@ node_js:
   - "7"
 branches:
   only:
-    - master
+    - test
 script: 
   - ng build 
 install: 
