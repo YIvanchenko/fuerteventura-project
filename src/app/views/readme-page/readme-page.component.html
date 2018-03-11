@@ -1,0 +1,7 @@
+<h1>Welcome to Fuerteventura project!</h1>
+<p>Book list:</p>
+<ul>
+  <li *ngFor="let book of (books | async)">
+    <pre> {{ book.title || 'missing title' }}</pre>
+  </li>
+</ul>
