@@ -15,8 +15,8 @@ export class BookService implements IRepository<Book>{
   
   private readonly bookFirestoreCollection: AngularFirestoreCollection<Book>;
 
-  constructor(private gFirestore: AngularFirestore) {
-    this.bookFirestoreCollection = gFirestore.collection<Book>(this.basePath);
+  constructor(private ngFirestore: AngularFirestore) {
+    this.bookFirestoreCollection = ngFirestore.collection<Book>(this.basePath);
   }
   
   getAll(): Observable<Book[]>  {

@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Please sign in</h1>
+<div>
+  <h2>Sign in with social networks</h2>
+
+  <button mat-icon-button (click)="signInWithGoogle()" class="btn-google">
+    <i class="fa fa-google"></i>
+  </button>
+  <button mat-icon-button (click)="signInWithGithub()" class="btn-github" disabled>
+    <i class="fa fa-github"></i>
+  </button>
+  <button mat-icon-button (click)="signInWithFacebook()" class="btn-facebook" disabled>
+    <i class="fa fa-facebook"></i>
+  </button>
+  <button mat-icon-button (click)="signInWithTwitter()" class="btn-twitter" disabled>
+    <i class="fa fa-twitter"></i>
+  </button>
+
+  <h3>or with an email account</h3>
+
+  <form [formGroup]="userForm" *ngIf="!newUser" (ngSubmit)="login()">
+
+    <p>Email</p>
+    <mat-form-field>
+      <input matInput type="email" id="email" formControlName="email" required>
+    </mat-form-field>
+    <div *ngIf="formErrors.email" class="help is-danger">
+      {{ formErrors.email }}
+    </div>
+
+    <p>Password</p>
+    <input type="password" id="password" class="input"
+           formControlName="password" required>
+    <div *ngIf="formErrors.password" class="help is-danger">
+      {{ formErrors.password }}
+    </div>
+
+
+    <span *ngIf="userForm.valid" class="help is-success">Form Looks Valid</span>
+    <a *ngIf="!passReset && userForm.controls.email.valid" class="help is-info" (click)="resetPassword()">Reset Password for {{userForm.value.email}}?</a>
+    <p *ngIf="passReset" class="help is-info">Reset requested. Check your email instructions.</p>
+
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial type="submit" [disabled]="!userForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

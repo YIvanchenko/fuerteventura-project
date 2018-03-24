@@ -3,14 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ReadmePageComponent } from './views/readme-page/readme-page.component';
 
-//import { AuthGuard } from './core/auth.guard';
-//import { CoreModule } from './core/core.module';
+import { SecurityGuard } from './services/security.guard';
+import { UserLoginComponent } from './views/user-login/user-login.component';
 
 const routes: Routes = [
-  { path: '', component: ReadmePageComponent },
-  //{ path: 'login', component: UserLoginComponent },
-  //{ path: 'items', component: ItemsListComponent, canActivate: [AuthGuard] },
-  //{ path: 'notes', component: NotesListComponent,  canActivate: [AuthGuard] },
+  { path: '', component: ReadmePageComponent, canActivate: [SecurityGuard] },
+  { path: 'login', component: UserLoginComponent }
+  //{ path: 'items', component: ItemsListComponent, canActivate: [SecurityGuard] },
+  //{ path: 'notes', component: NotesListComponent,  canActivate: [SecurityGuard] },
   //// uploads are lazy loaded
   //{ path: 'uploads', loadChildren: './uploads/shared/upload.module#UploadModule', canActivate: [AuthGuard] },
 ];
@@ -18,7 +18,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  //providers: [AuthGuard],
+  providers: [SecurityGuard],
 })
 export class RoutingModule {
 }

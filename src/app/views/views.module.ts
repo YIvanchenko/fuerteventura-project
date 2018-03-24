@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { FooterNavComponent } from './footer-nav/footer-nav.component';
 import { ReadmePageComponent } from './readme-page/readme-page.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   imports: [
@@ -26,13 +28,16 @@ import { ReadmePageComponent } from './readme-page/readme-page.component';
   declarations: [
     TopNavComponent,
     FooterNavComponent,
-    ReadmePageComponent
+    ReadmePageComponent,
+    UserLoginComponent,
+    UserFormComponent
   ],
-  entryComponents: [],
+  entryComponents: [UserFormComponent],
   exports: [
     TopNavComponent,
     FooterNavComponent,
-    ReadmePageComponent
+    ReadmePageComponent,
+    UserLoginComponent
   ]
 })
 export class ViewsModule {
